@@ -9,5 +9,5 @@ if(mysqli_connect_error()){
     exit();
 }
 //Etape 3 : Définir l'encodage des caractères.
-mysqli_set_charset($connex, "utf8");
+mysqli_set_charset($connexion, "utf8");
 ?>
