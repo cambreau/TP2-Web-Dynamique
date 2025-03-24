@@ -8,14 +8,9 @@
   <body>
     <nav>
       <ul>
-        \
         <li><a href="index.php">Accueil</a></li>
-        <li><a href="/BD/formulaire-creation-utilisateur.php">Creation utilisateur</a></li>
+        <li><a href="formulaire-creation-utilisateur.php">Création utilisateur</a></li>
         <li><a href="">Connexion</a></li>
-        <li><a href="">Creation Article</a></li>
+        <li><a href="">Création Article</a></li>
       </ul>
     </nav>
-    <main>
-      <h1>Accueil</h1>
-    </main>
- 

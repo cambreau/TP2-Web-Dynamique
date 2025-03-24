@@ -1,6 +1,6 @@
 <?php
 //Étape 1 : Connexion a la base de donnees forumEtudiant.
-require('connexion.php');
+require('BD/connexion.php');
 
 //Étape 2 : Déclaration des variables.
 $patterNomUtilisateur ="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; //Email
@@ -14,24 +14,10 @@ $nom_utilisateur = isset($_POST['nom_utilisateur'])?mysqli_real_escape_string($c
 $nom= isset($_POST['nom'])?mysqli_real_escape_string($connexion, $_POST['nom']):"";
 $mot_de_passe= isset($_POST['mot_de_passe'])?mysqli_real_escape_string($connexion, $_POST['mot_de_passe']):"";
 $date_de_naissance = isset($_POST['date_de_naissance'])?mysqli_real_escape_string($connexion, $_POST['date_de_naissance']):"";
-?>
 
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nouvel utilisateur</title>
-  </head>
-  <body>
-    <nav>
-      <ul>
-        <li><a href="index.php">Accueil</a></li>
-        <li><a href="formulaire-creation-utilisateur.php">Création utilisateur</a></li>
-        <li><a href="">Connexion</a></li>
-        <li><a href="">Création Article</a></li>
-      </ul>
-    </nav>
+//Étape 4 : Ajout de l'entete.
+ require('entete.php');
+ ?>
     <main>
       <h1>Création utilisateur</h1>
       <form action="formulaire-utilisateur.php" method="post">
@@ -43,16 +29,16 @@ $date_de_naissance = isset($_POST['date_de_naissance'])?mysqli_real_escape_strin
         <input type="password" id="mot_de_passe" name="mot_de_passe" value="<?=$mot_de_passe?>" required />
         <label for="date_de_naissance">Date de naissance</label>
         <input type="date" id="date_de_naissance" name="date_de_naissance" value="<?=$date_de_naissance?>" required />
-        <input type="submit" name="boutonEnvoie" value="Enregistrer" />
+        <input type="submit" name="boutonEnvoie" value="Enregistrer" class="btn"/>
       </form>
     </main>
-  </body>
-</html>
+    <?php
+  //Étape 5 : Ajout du pied de page.
+   require('pied-page.php'); 
 
-<?php
 if(isset($_POST["boutonEnvoie"]))
 {
-  //Étape 4 : Valider les variables.
+  //Étape 6 : Valider les variables.
   if(isset($_POST["nom_utilisateur"]) && isset($_POST["nom"]) && isset($_POST["mot_de_passe"]) && isset($_POST["date_de_naissance"]))
   { 
     //Si vrai: Si la méthode de requête n'est pas POST, rediriger vers la page du formulaire de redirection.
@@ -117,15 +103,15 @@ if(isset($_POST["boutonEnvoie"]))
       
   if(!$erreurValidationChamp && preg_match($patterNomUtilisateur,$nom_utilisateur) && preg_match($patternNom, $nom) && preg_match($patternMotdePasse, $mot_de_passe) && preg_match($patternDateNaissance, $date_de_naissance))
   {
-    //Étape 5 : Si le mot de passe respecte le pattern, on le sécurise avec la fonction password_hash.
+    //Étape 7 : Si le mot de passe respecte le pattern, on le sécurise avec la fonction password_hash.
     //PASSWORD_BCRYPT recommandé en cours.
     $mot_de_passe = password_hash($mot_de_passe, PASSWORD_BCRYPT, ['cost' => 10]);;
 
-    //Étape 6 : Créer un nouvel utilisateur.
+    //Étape 8 : Créer un nouvel utilisateur.
     $requeteSQL = "INSERT INTO Utilisateur (nom_utilisateur, nom, mot_de_passe, date_de_naissance)
     VALUES ('$nom_utilisateur' ,'$nom','$mot_de_passe','$date_de_naissance')";
 
-    //Étape 7 : Si la requête est exécutée afficher un message de succès.
+    //Étape 9 : Si la requête est exécutée afficher un message de succès.
     if(mysqli_query($connexion, $requeteSQL))
     {
       ?>

@@ -1,5 +1,4 @@
 <?php
-
 //Etape 1 : Connexion a la base de donnees forumEtudiant
 $connexion = mysqli_connect('localhost', 'root', 'admin', 'forumEtudiant', 3306);
 
