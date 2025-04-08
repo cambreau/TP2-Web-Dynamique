@@ -1,7 +1,7 @@
 <?php
 //Étape 1: Si la méthode de requête n'est pas POST, rediriger vers la page du formulaire de redirection.
 if($_SERVER['REQUEST_METHOD'] != 'POST'){
-    header('location:=se-connection.php');
+    header('location:index.php');
     die();
 }
 
@@ -15,13 +15,20 @@ foreach($_POST as $cle=>$valeur){
 
 //Étape 4 : Vérifier si l'utilisateur existe déjà.
 //Requête SQL.
-$requeteSQL =  "SELECT * FROM utilisateur WHERE nom_utilisateur'= '$nom_utilisateur''";
+$requeteSQL ="SELECT * FROM utilisateur WHERE nom_utilisateur='$nom_utilisateur'";
 $resultat = mysqli_query($connexion, $requeteSQL);
 
 //Compter le nombre de lignes de $resultat.
-$compteurLigne = mysqli_num_rows($result);
+$compteurLigne = mysqli_num_rows($resultat);
 if($compteurLigne  == 1){
-    header('location:forum.php');
+    //Si l'utilisateur existe, valider le mot de passe.
+    $utilisateur= mysqli_fetch_array($resultat, MYSQLI_ASSOC);
+    if(password_verify($mot_de_passe, $utilisateur['mot_de_passe'])){
+        //Si le mot de passe est correct, créer une session.
+         header('location:forum.php');}
+         else{
+            header('location:index.php?msg=1');}
 }else{
-    header('location:se-connecter?msg=1');
+    header('location:index.php?msg=2');
 }
+?>

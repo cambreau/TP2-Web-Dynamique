@@ -1,0 +1,175 @@
+/* Variables CSS ----------------------- */
+:root {
+  /* --- Espacement --- */
+  --rythme-serre: 5px;
+  --rythme-base: 20px;
+  --rythme-espace: 40px;
+  --rythme-tres-espace: 80px;
+  /* --- Couleurs --- */
+  --couleur-fond: #fffbf7;
+  --couleur-texte: #252b0c;
+  --couleur-principale: #90a2dc;
+  --couleur-erreur: #c7343e;
+  --couleur-succes: #577b3e;
+  /* --- Interligne --- */
+  --interligne-base: 1.5625em;
+  /* --- Police --- */
+  --police-general: "Lora", sans-serif;
+  /* --- Taille de police --- */
+  --taille-police-normal: 1rem;
+  --taille-police-grand: 1.8rem;
+  /* --- Epaisseur de police --- */
+  --epaisseur-police-normale: 400;
+  --epaisseur-police-gras: 600;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--police-general);
+  line-height: var(--interligne-base);
+  font-size: var(--taille-police-normal);
+  color: var(--couleur-texte);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+main {
+  padding: var(--rythme-base);
+  flex-grow: 1;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* En-tête et bas de page */
+footer,
+nav ul {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--couleur-principale);
+  padding: var(--rythme-base);
+  gap: var(--rythme-espace);
+  align-items: center;
+}
+
+nav li {
+  list-style-type: none;
+}
+
+nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: var(--epaisseur-police-gras);
+  align-content: center;
+  color: var(--couleur-texte);
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+/*-----------------------------------------------------------------------------------*/
+h1 {
+  font-size: var(--taille-police-grand);
+  font-weight: var(--epaisseur-police-gras);
+  text-transform: uppercase;
+  margin: var(--rythme-espace) 0;
+}
+/*-----------------------------------------------------------------------------------*/
+/*Bouton*/
+.btn {
+  width: 200px;
+  display: inline-block;
+  text-align: center;
+  font-weight: var(--epaisseur-police-gras);
+  border-radius: var(--arrondi-grand);
+  background: var(--couleur-principale);
+  padding: var(--rythme-serre);
+  margin: var(--rythme-base);
+  border: thick double var(--couleur-principale);
+  border-radius: 5px;
+}
+.btn:hover {
+  background: var(--couleur-fond);
+  color: var(--couleur-texte);
+  text-decoration: none;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*Message*/
+.message {
+  border-radius: 10px;
+  padding: var(--rythme-base);
+  font-weight: var(--epaisseur-police-gras);
+  font-size: var(--taille-police-moyen);
+}
+
+.message > ul > li {
+  color: var(--couleur-fond);
+  font-weight: var(--epaisseur-police-normale);
+  list-style-type: none;
+  margin-left: var(--rythme-base);
+}
+
+.erreur {
+  background-color: var(--couleur-erreur);
+  color: var(--couleur-fond);
+  border: 1px solid var(--couleur-erreur);
+}
+
+.succes {
+  background-color: var(--couleur-succes);
+  color: var(--couleur-fond);
+  border: 1px solid var(--couleur-erreur);
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*Formulaire*/
+form {
+  width: 350px;
+  margin: var(--rythme-base) auto;
+}
+
+form div {
+  padding: var(--rythme-base);
+  border-bottom: 1px solid var(--couleur-principale);
+}
+
+form div:first-child {
+  border-top: 1px solid var(--couleur-principale);
+}
+
+form div label {
+  display: inline-block;
+  font-weight: var(--epaisseur-police-gras);
+  width: 150px;
+  margin-right: var(--rythme-base);
+}
+
+form div input {
+  width: 300px;
+  padding: var(--rythme-serre);
+  border-radius: 5px;
+}
+
+/*-----------------------------------------------------------------------------------*/
+.article-forum {
+  max-width: 1000px;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  gap: var(--rythme-base);
+  padding: var(--rythme-base);
+  border: 1px solid var(--couleur-principale);
+  border-radius: 5px;
+}
