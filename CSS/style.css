@@ -130,7 +130,7 @@ h1 {
 .succes {
   background-color: var(--couleur-succes);
   color: var(--couleur-fond);
-  border: 1px solid var(--couleur-erreur);
+  border: 1px solid var(--couleur-succes);
 }
 
 /*-----------------------------------------------------------------------------------*/

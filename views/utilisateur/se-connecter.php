@@ -1,7 +1,7 @@
     <h1>Se connecter</h1>
         <div>
           <form action="?controller=utilisateur&function=connexion" method="post">
-              <?= "<span class='erreur'>".$msg."</span>"; ?>
+              <?= isset($donnee['msg'])?$donnee['msg']:null; ?>
               <div>
               <label for="nom_utilisateur">Nom utilisateur</label>
                 <input type="email" id="nom_utilisateur" name="nom_utilisateur" 

@@ -10,7 +10,7 @@
     <nav>
       <ul>
         <li><a href="?controller=base&function=index">Accueil</a></li>
-        <li><a href="?controller=utilisateur&function=seConnecter">Connexion</a></li>
+        <li><a href="?controller=utilisateur&function=connexion">Connexion</a></li>
         <li><a href="?controller=utilisateur&function=creation">Nouvel utilisateur</a></li>
         <li><a href="?controller=forum&function=creation">Création Article</a></li>
       </ul>
