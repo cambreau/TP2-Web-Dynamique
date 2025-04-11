@@ -23,4 +23,5 @@ function render($fichier, $donnee = null){
     include_once($miseEnPage_fichier);
     return $contenu; //Retourner le contenu de la page.
 }
+
 ?>

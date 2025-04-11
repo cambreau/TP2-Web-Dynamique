@@ -115,11 +115,9 @@ function utilisateur_insertion($POST):array
  * @param  $POST
  * @return string|null $msg
  */
-function utilisateur_autorisation($POST): string|null  {
+function utilisateur_connexion($POST): string|null  {
   //Connexion a la base de donnees forumEtudiant.
   require(CONNEX_DIR);
-  //Session start.
-  session_start();
   //Déclaration des variables.
   $msg = null; 
   //Valider si l'utilisateur existe dans la base de données.
@@ -129,13 +127,15 @@ function utilisateur_autorisation($POST): string|null  {
       $requeteSQL = "SELECT * FROM utilisateur WHERE nom_utilisateur='$POST[nom_utilisateur]'";
       $resultat = mysqli_query($connexion, $requeteSQL);
       //Récupérer les données de l'utilisateur.
-      $utilisateur = mysqli_fetch_all($resultat, MYSQLI_ASSOC);
+      $utilisateur =  mysqli_fetch_array($resultat, MYSQLI_ASSOC);
       //Vérifier le mot de passe.
       if(password_verify($POST['mot_de_passe'], $utilisateur['mot_de_passe']))
       {
-          $_SESSION['id_utilisateur'] = $utilisateur['id_utilisateur'];
-          $_SESSION['nom_utilisateur'] = $utilisateur['nom_utilisateur'];
-          $_SESSION['nom'] = $utilisateur['nom'];
+        session_regenerate_id(); //Regénérer l'ID de session pour éviter le vol de session.
+        //Stocker les données de l'utilisateur dans la session.
+        $_SESSION['id_utilisateur'] = $utilisateur['id_utilisateur'];
+        $_SESSION['nom_utilisateur'] = $utilisateur['nom_utilisateur'];
+        $_SESSION['nom'] = $utilisateur['nom'];
       }else
       {
         $msg= "<p class='message erreur'>Le mot de passe est incorrect.</p>";
@@ -145,5 +145,16 @@ function utilisateur_autorisation($POST): string|null  {
       $msg= "<p class='message erreur'>Le nom d'utilisateur n'existe pas.</p>";
   }
   return $msg;
+}
+
+/**
+ * Fonction qui ferme la session active.
+ * @return void
+ */
+function utilisateur_deconnexion(){
+  //Efface toutes les variables de session qui ont été enregistrées. 
+  session_unset();
+  //Ferme la session active.
+  session_destroy();
 }
 ?>

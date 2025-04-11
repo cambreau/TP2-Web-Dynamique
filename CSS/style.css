@@ -51,13 +51,30 @@ main {
   flex-grow: 1;
 }
 
+h2 {
+  margin-left: var(--rythme-base);
+}
+
 /*-----------------------------------------------------------------------------------*/
 /* En-tête et bas de page */
-footer,
+nav,
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--couleur-principale);
+  padding: var(--rythme-serre);
+}
+
+nav div {
+  display: flex;
+  flex-direction: row;
+  gap: var(--rythme-espace);
+}
+
 nav ul {
   display: flex;
   flex-direction: row;
-  background-color: var(--couleur-principale);
   padding: var(--rythme-base);
   gap: var(--rythme-espace);
   align-items: center;
@@ -78,19 +95,57 @@ nav a {
 nav a:hover {
   text-decoration: underline;
 }
+
+nav a.connexion {
+  background-color: var(--couleur-succes);
+  color: var(--couleur-fond);
+  padding: var(--rythme-serre);
+  border: 1px solid var(--couleur-succes);
+  border-radius: 10px;
+}
+nav a.connexion:hover {
+  background-color: var(--couleur-fond);
+  color: var(--couleur-succes);
+  text-decoration: none;
+}
+
+nav a.deconnexion {
+  background-color: var(--couleur-erreur);
+  color: var(--couleur-fond);
+  padding: var(--rythme-serre);
+  border: 1px solid var(--couleur-erreur);
+  border-radius: 10px;
+}
+nav a.deconnexion:hover {
+  background-color: var(--couleur-fond);
+  color: var(--couleur-erreur);
+  text-decoration: none;
+}
+
 /*-----------------------------------------------------------------------------------*/
 h1 {
   font-size: var(--taille-police-grand);
   font-weight: var(--epaisseur-police-gras);
   text-transform: uppercase;
-  margin: var(--rythme-espace) 0;
+  margin: var(--rythme-base) 0;
 }
 /*-----------------------------------------------------------------------------------*/
 /*Bouton*/
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--rythme-espace);
+  margin: var(--rythme-base) auto;
+}
+
 .btn {
   width: 200px;
   display: inline-block;
   text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--couleur-texte);
   font-weight: var(--epaisseur-police-gras);
   border-radius: var(--arrondi-grand);
   background: var(--couleur-principale);
@@ -109,6 +164,7 @@ h1 {
 /*Message*/
 .message {
   border-radius: 10px;
+  margin: var(--rythme-base);
   padding: var(--rythme-base);
   font-weight: var(--epaisseur-police-gras);
   font-size: var(--taille-police-moyen);
@@ -131,6 +187,12 @@ h1 {
   background-color: var(--couleur-succes);
   color: var(--couleur-fond);
   border: 1px solid var(--couleur-succes);
+}
+
+.information {
+  margin-left: var(--rythme-base);
+  color: #90a2dc;
+  font-weight: 600;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -162,11 +224,14 @@ form div input {
   border-radius: 5px;
 }
 
+form div input:read-only {
+  background-color: rgb(206, 203, 203);
+}
 /*-----------------------------------------------------------------------------------*/
 .article-forum {
   max-width: 1000px;
   display: flex;
-  margin: auto;
+  margin: var(--rythme-base) auto;
   flex-direction: column;
   gap: var(--rythme-base);
   padding: var(--rythme-base);

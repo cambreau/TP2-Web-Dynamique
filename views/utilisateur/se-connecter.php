@@ -1,5 +1,4 @@
     <h1>Se connecter</h1>
-        <div>
           <form action="?controller=utilisateur&function=connexion" method="post">
               <?= isset($donnee['msg'])?$donnee['msg']:null; ?>
               <div>
@@ -12,6 +11,4 @@
                 <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="Veuillez saisir votre mot de passe" required>
               </div>
               <input type="submit" value="Se connecter" class="btn">
-          </form>
-          <a href="formulaire-utilisateur.php">Créer un compte</a>
-      </div>    
+          </form>  
